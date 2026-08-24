@@ -49,7 +49,7 @@ Skill 是一套可复用的工作方法。用 `/skills` 选择，或在任务中
 
 Plugin 用来分发 Skills 和连接器。MCP 让 Codex 访问外部工具与数据。可以简单理解为：Skill 规定怎么做，MCP 提供可以使用的系统。
 
-本仓库附带六个可直接调用的 Skill，以及一个供 Nature Skills 使用的内部依赖包：
+本仓库附带六个可直接调用的 Skill，以及一个供 Nature Writing 使用的内部依赖包：
 
 | Skill | 适用任务 |
 | --- | --- |
@@ -57,10 +57,10 @@ Plugin 用来分发 Skills 和连接器。MCP 让 Codex 访问外部工具与数
 | `$shuorenhua` | 清理文章里的模板感和 AI 腔，同时保护事实、数字和术语 |
 | `$llm-wiki` | 维护 Codex + Obsidian 的 Markdown 知识库 |
 | `$design-geist` | 为网站、仪表盘和开发者工具提供 Geist 风格的前端设计规范 |
-| `$nature-figure` | 规划、绘制、审查和导出期刊级科研图表与科学示意图 |
+| `$academic-figures-drawer` | 生成、审查和导出可编辑的论文框图与方法示意图；默认使用 Tabler outline 图标 |
 | `$nature-writing` | 规划和起草 Nature 风格论文正文与首次投稿材料 |
 
-`nature-shared` 随仓库一同提供，但只作为上述 Nature Skills 的共享规则和期刊格式依赖，不应单独调用。
+`nature-shared` 随仓库一同提供，但只作为 `$nature-writing` 的共享规则和期刊格式依赖，不应单独调用。
 
 其他高频能力通常以 Skill 或 Plugin 提供：PDF 阅读、Word 文档、表格分析、演示文稿、浏览器操作、邮件与日历、GitHub、长视频或书籍提炼。具体名称取决于本机安装情况，选择建议见 [SKILLS.md](SKILLS.md)。
 
@@ -123,3 +123,7 @@ obsidian-starter/
 ## 前端设计规范
 
 `$design-geist` 是一份前端设计规范，适合网站、仪表盘、开发者工具和文档站。它规定了 Geist 字体、黑白灰配色、间距、圆角、组件、图标和动效的使用方式，用于实现克制、清晰、偏工程感的界面。它不是 Vercel 官方设计文档。
+
+## 科研框图
+
+`$academic-figures-drawer` 以可编辑 `.drawio` 为源文件，输出 PNG、SVG 和 PDF，并通过尺寸、对齐、连线穿透和论文宽度截图进行验收。科学逻辑优先使用 draw.io 原生矢量组件；需要图标时默认检索 MIT 许可的 Tabler outline，只保存实际使用的 SVG。Koboyo 仅在明确要求手绘风格时启用，不与 Tabler 混用。

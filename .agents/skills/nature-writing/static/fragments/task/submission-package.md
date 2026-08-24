@@ -37,4 +37,4 @@ Use this task only before the first editorial decision. Read `references/submiss
   accepted-in-principle production files.
 - Filled LaTeX deliverables from `templates/submission/` when the user requests `.tex` files.
 
-Graphical abstracts and TOC graphics belong to `nature-figure`. Revision cover letters and rebuttals belong to `nature-response`.
+Graphical abstracts, method diagrams, and TOC graphics belong to `$academic-figures-drawer`. Revision cover letters and rebuttals belong to `nature-response`.

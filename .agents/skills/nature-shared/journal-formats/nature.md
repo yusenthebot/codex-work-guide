@@ -217,7 +217,7 @@ For flagship Nature, the initial cover letter is **optional**. If supplied:
   restating results or methods
 - make the figure and legend understandable in isolation where possible
 
-Use the Nature-specific figure reference in `nature-figure` for final dimensions,
+Use `$academic-figures-drawer` and the journal's current author instructions for final dimensions,
 editable formats, accessibility, image integrity and the distinction between
 main-figure and Extended Data uploads.
 

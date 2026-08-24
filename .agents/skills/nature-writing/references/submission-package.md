@@ -42,7 +42,7 @@ Return a compact table:
 | Title page | required / optional / N/A | author metadata | draft/status |
 | Cover letter | required / optional / N/A | claim + fit | draft/status |
 | Highlights | required / optional / N/A | key findings | draft/status |
-| Graphical abstract | required / optional / N/A | route to nature-figure | status |
+| Graphical abstract | required / optional / N/A | route to `$academic-figures-drawer` | status |
 | Supplementary information | required / optional / N/A | supplied files | status |
 | Reporting checklist | required / optional / N/A | study design | status |
 | Declarations | required / optional / N/A | author facts | draft/status |

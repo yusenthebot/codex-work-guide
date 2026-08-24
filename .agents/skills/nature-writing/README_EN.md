@@ -49,6 +49,6 @@
 
 - `nature-polishing`: English polishing, translation, and style tightening.
 - `nature-citation`: match supporting references for claims.
-- `nature-figure`: align figure conclusions and panel design with manuscript narrative.
+- `$academic-figures-drawer`: align editable figures, figure conclusions, and panel design with manuscript narrative.
 - `nature-response`: revision cover letters, responses to reviewers, and revision correspondence.
 - `nature-reviewer`: simulated review before submission.

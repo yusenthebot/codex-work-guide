@@ -93,7 +93,7 @@ The files under `references/` are deep references and the example library, not d
 
 - `nature-writing` owns **initial submission** materials prepared before peer review.
 - `nature-response` owns revision cover letters, rebuttals, point-by-point responses, marked manuscripts, appeals, and other post-decision correspondence.
-- Route graphical abstracts and TOC graphics to `nature-figure`; route simulated pre-submission peer review to `nature-reviewer`.
+- Route graphical abstracts, method diagrams, and TOC graphics to `$academic-figures-drawer`; route simulated pre-submission peer review to `nature-reviewer`.
 
 ## Why this split
 

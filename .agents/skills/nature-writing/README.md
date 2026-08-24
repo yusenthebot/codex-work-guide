@@ -49,6 +49,6 @@
 
 - `nature-polishing`：英文润色、翻译和风格收束。
 - `nature-citation`：为 claim 匹配支撑文献。
-- `nature-figure`：把图件结论和面板设计对齐到正文叙事。
+- `$academic-figures-drawer`：把可编辑图件、图件结论和面板设计对齐到正文叙事。
 - `nature-response`：返修 cover letter、response to reviewers 和返修通信材料。
 - `nature-reviewer`：投稿前模拟审稿。

@@ -10,12 +10,12 @@ Skill 负责工作方法，Plugin 负责安装和分发，MCP 或 Connector 负�
 | `$shuorenhua` | 修改公开文章、汇报和说明文字 | 保留事实、术语、数字和责任归属，只处理表达 |
 | `$llm-wiki` | 管理 Obsidian Markdown 知识库 | 支持 ingest、query 和 lint |
 | `$design-geist` | 设计网站、仪表盘和开发者工具 | 使用 Geist 字体、黑白灰配色和克制的组件规范 |
-| `$nature-figure` | 制作、修改或审查科研图表与科学示意图 | 包含 Python/R 路由、矢量与 TIFF 导出、图中文字和版式 QA |
+| `$academic-figures-drawer` | 制作、修改或审查论文框图与方法示意图 | 以 `.drawio` 为源文件，默认使用 Tabler outline，并检查组件匹配、尺寸、连线穿透和论文宽度可读性 |
 | `$nature-writing` | 规划或起草 Nature 风格论文与首次投稿材料 | 按论文类型、章节、语言和目标期刊加载对应规则 |
 
 打开本仓库后，Codex 会从 `.agents/skills/` 发现这些 Skill。若没有出现，重新打开任务或重启 Codex。
 
-`nature-shared` 是两个 Nature Skills 的内部依赖包，不作为独立工作流调用。它与主 Skill 一起保存在 `.agents/skills/`，确保仓库克隆后相对引用仍然有效。
+`nature-shared` 是 `$nature-writing` 的内部依赖包，不作为独立工作流调用。它与主 Skill 一起保存在 `.agents/skills/`，确保仓库克隆后相对引用仍然有效。
 
 ## 常用扩展
 

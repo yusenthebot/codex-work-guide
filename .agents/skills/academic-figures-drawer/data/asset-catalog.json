@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "last_verified": "2026-08-23",
+  "tiers": {
+    "0": "Default-safe local or permissively licensed source. Prefer these first.",
+    "1": "Official vendor source with use or trademark terms. Use only for the exact product or service represented.",
+    "2": "Per-asset or attribution-sensitive source. Verify the selected asset and record the required credit before use."
+  },
+  "entries": [
+    {
+      "id": "drawio-local-shapes",
+      "title": "Bundled draw.io shape index",
+      "kind": "local-shape-index",
+      "tier": 0,
+      "formats": ["draw.io style strings"],
+      "license": "Bundled upstream notices apply",
+      "attribution_required": false,
+      "bundle_policy": "bundled",
+      "default_action": "Run scripts/shapesearch.py and use the exact returned style and aspect ratio.",
+      "compatibility": "Native editable draw.io shapes; works offline.",
+      "keywords": ["academic", "block", "flowchart", "network", "cloud", "uml", "bpmn", "database", "electrical", "pid", "robot", "sensor", "computer", "本地", "框图", "流程图", "网络", "机器人", "传感器"],
+      "urls": {
+        "source": "https://github.com/jgraph/drawio"
+      }
+    },
+    {
+      "id": "drawio-public-libraries",
+      "title": "diagrams.net public custom libraries directory",
+      "kind": "drawio-library-directory",
+      "tier": 0,
+      "formats": [".xml mxlibrary", "SVG", "PNG"],
+      "license": "Repository Apache-2.0; individual upstream asset license is listed per library and still governs",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Choose a specific listed library, verify its per-library license, then load its raw XML URL in draw.io.",
+      "compatibility": "Native draw.io custom libraries; load with File > Open Library from URL or clibs=U<encoded-url>.",
+      "keywords": ["custom library", "template", "icons", "drawio", "mxlibrary", "素材库", "模版", "模板", "图标"],
+      "urls": {
+        "source": "https://github.com/jgraph/drawio-libs",
+        "documentation": "https://www.drawio.com/docs/manual/templates/custom-template-libraries/"
+      }
+    },
+    {
+      "id": "drawio-technical-templates",
+      "title": "diagrams.net technical template building blocks",
+      "kind": "drawio-template-library",
+      "tier": 0,
+      "formats": [".xml mxlibrary"],
+      "license": "Apache-2.0 repository",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use as a layout fragment or composition reference; restyle it to the figure contract.",
+      "compatibility": "Native draw.io custom library.",
+      "keywords": ["technical", "template", "building blocks", "architecture", "system", "pipeline", "框图", "架构", "流程", "模块"],
+      "urls": {
+        "source": "https://github.com/jgraph/drawio-libs",
+        "library": "https://jgraph.github.io/drawio-libs/libs/templates.xml",
+        "open_in_drawio": "https://app.diagrams.net/?splash=0&clibs=Uhttps%3A%2F%2Fjgraph.github.io%2Fdrawio-libs%2Flibs%2Ftemplates.xml"
+      }
+    },
+    {
+      "id": "drawio-material-symbols",
+      "title": "Google Material Symbols for draw.io",
+      "kind": "drawio-icon-library",
+      "tier": 0,
+      "formats": [".xml mxlibrary", "recolorable SVG"],
+      "license": "Apache-2.0",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use one consistent outlined icon family for generic actions or devices; avoid brand substitution.",
+      "compatibility": "Native draw.io custom library; recolorable.",
+      "keywords": ["generic", "action", "device", "sensor", "robot", "navigation", "camera", "map", "compute", "outline", "通用", "设备", "传感器", "机器人", "导航", "相机", "地图"],
+      "urls": {
+        "source": "https://fonts.google.com/icons",
+        "library": "https://jgraph.github.io/drawio-libs/libs/material-symbols.xml"
+      }
+    },
+    {
+      "id": "drawio-heroicons",
+      "title": "Heroicons for draw.io",
+      "kind": "drawio-icon-library",
+      "tier": 0,
+      "formats": [".xml mxlibrary", "recolorable SVG"],
+      "license": "MIT",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use for sparse interface, state, and action symbols when Material Symbols do not fit.",
+      "compatibility": "Native draw.io custom library; outline and solid variants.",
+      "keywords": ["interface", "state", "action", "console", "user", "tool", "outline", "界面", "状态", "动作", "控制台", "工具"],
+      "urls": {
+        "source": "https://github.com/tailwindlabs/heroicons",
+        "library": "https://jgraph.github.io/drawio-libs/libs/hero-icons.xml"
+      }
+    },
+    {
+      "id": "drawio-carbon-icons",
+      "title": "IBM Carbon icons for draw.io",
+      "kind": "drawio-icon-library",
+      "tier": 0,
+      "formats": [".xml mxlibrary", "recolorable SVG"],
+      "license": "Apache-2.0",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use for data, compute, AI, quantum, and observability concepts with one consistent family.",
+      "compatibility": "Native draw.io custom library; recolorable.",
+      "keywords": ["data", "compute", "ai", "model", "experiment", "observability", "log", "quantum", "数据", "计算", "模型", "实验", "日志", "可观测"],
+      "urls": {
+        "source": "https://carbondesignsystem.com/elements/icons/library/",
+        "library": "https://jgraph.github.io/drawio-libs/libs/carbon/carbon-icons.xml"
+      }
+    },
+    {
+      "id": "tabler-icons",
+      "title": "Tabler Icons",
+      "kind": "open-source-svg-icon-family",
+      "tier": 0,
+      "formats": ["SVG"],
+      "license": "MIT",
+      "attribution_required": false,
+      "bundle_policy": "selected-files-only",
+      "default_action": "Default external SVG family for restrained engineering figures. Search and vendor selected 24x24 outline icons with scripts/tablericons.py, then run validate_svg_assets.py and preserve viewBox/aspect.",
+      "compatibility": "Self-contained SVG imports as vector image cells; scripts/tablericons.py uses the official GitHub tree/raw paths and copies the MIT notice beside selected files.",
+      "keywords": ["engineering", "outline", "robot", "tools", "model", "simulation", "certificate", "experiment", "terminal", "folder", "工程", "线性图标", "机器人", "技能", "实验", "证书"],
+      "urls": {
+        "source": "https://github.com/tabler/tabler-icons",
+        "icons": "https://tabler.io/icons"
+      }
+    },
+    {
+      "id": "iconoir",
+      "title": "Iconoir",
+      "kind": "open-source-svg-icon-family",
+      "tier": 0,
+      "formats": ["SVG"],
+      "license": "MIT",
+      "attribution_required": false,
+      "bundle_policy": "selected-files-only",
+      "default_action": "Use as a coherent 24x24 outline alternative when its silhouettes match better than Tabler; never mix both in one repeated row.",
+      "compatibility": "SVG imports as vector image cells; run validate_svg_assets.py before embedding.",
+      "keywords": ["outline", "interface", "system", "device", "action", "线性图标", "系统", "设备", "动作"],
+      "urls": {
+        "source": "https://github.com/iconoir-icons/iconoir",
+        "icons": "https://iconoir.com/"
+      }
+    },
+    {
+      "id": "phosphor-icons-core",
+      "title": "Phosphor Icons Core",
+      "kind": "open-source-svg-icon-family",
+      "tier": 0,
+      "formats": ["SVG"],
+      "license": "MIT",
+      "attribution_required": false,
+      "bundle_policy": "selected-files-only",
+      "default_action": "Choose one Phosphor weight for the complete figure or panel; do not mix thin, regular, bold, fill, and duotone variants.",
+      "compatibility": "Raw SVG assets; run validate_svg_assets.py and preserve intrinsic aspect.",
+      "keywords": ["icons", "weights", "outline", "system", "robot", "experiment", "图标", "线性", "系统", "实验"],
+      "urls": {
+        "source": "https://github.com/phosphor-icons/core",
+        "icons": "https://phosphoricons.com/"
+      }
+    },
+    {
+      "id": "koboyo-icons",
+      "title": "Koboyo hand-drawn icons",
+      "kind": "custom-license-svg-icon-library",
+      "tier": 2,
+      "formats": ["SVG", "MCP search results"],
+      "license": "Koboyo custom icon license; broad personal/commercial use, no attribution, redistribution and competing-library restrictions",
+      "attribution_required": false,
+      "bundle_policy": "selected-files-only-no-library-redistribution",
+      "default_action": "Opt-in only when the user explicitly requests a hand-drawn/organic family or the supplied style reference requires it. Do not spend metered MCP retrieval when Tabler passes; record selected icons and do not redistribute a substantial subset.",
+      "compatibility": "Search and retrieve through Koboyo MCP or use selected SVGs; run validate_svg_assets.py before draw.io embedding.",
+      "keywords": ["hand drawn", "sketch", "explanatory", "robot", "diagram", "手绘", "草图", "解释图", "机器人"],
+      "urls": {
+        "source": "https://koboyo.com/icons",
+        "license": "https://koboyo.com/icons/license",
+        "mcp": "https://koboyo.com/mcp"
+      }
+    },
+    {
+      "id": "flaticon-nondefault",
+      "title": "Flaticon (non-default commercial library)",
+      "kind": "attribution-or-subscription-icon-marketplace",
+      "tier": 2,
+      "formats": ["SVG", "PNG", "EPS", "PSD"],
+      "license": "Not open source; free use generally requires attribution and resource redistribution/sublicensing is restricted",
+      "attribution_required": true,
+      "bundle_policy": "link-only",
+      "default_action": "Do not use as a default paper-figure source. Prefer MIT families; use only after verifying the exact asset and account/license terms and recording attribution.",
+      "compatibility": "SVG may import, but licensing and attribution must be cleared per use.",
+      "keywords": ["flaticon", "marketplace", "attribution", "commercial icons", "非开源", "署名", "商业图标"],
+      "urls": {
+        "source": "https://www.flaticon.com/",
+        "terms": "https://support.flaticon.com/articles/en_US/Knowledge/Personal-use-FI"
+      }
+    },
+    {
+      "id": "drawio-health-icons",
+      "title": "Health Icons for draw.io",
+      "kind": "drawio-icon-library",
+      "tier": 0,
+      "formats": [".xml mxlibrary", "recolorable SVG"],
+      "license": "CC0",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use for public-health and clinical concepts; choose either outline or filled style, never both.",
+      "compatibility": "Native draw.io custom library; recolorable.",
+      "keywords": ["health", "medical", "clinical", "hospital", "human", "body", "public health", "健康", "医疗", "临床", "医院", "人体"],
+      "urls": {
+        "source": "https://healthicons.org/",
+        "library": "https://jgraph.github.io/drawio-libs/libs/health/health-icons-outline.xml"
+      }
+    },
+    {
+      "id": "microsoft-visio-featured",
+      "title": "Microsoft featured Visio templates and diagrams",
+      "kind": "visio-template-directory",
+      "tier": 1,
+      "formats": [".vsdx", ".vstx"],
+      "license": "Microsoft template and service terms",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use the gallery to select a layout archetype; redraw and restyle scientific content instead of embedding a whole template.",
+      "compatibility": ".vsdx can be imported through online draw.io conversion; .vstx is treated as a Visio-only layout reference unless converted separately.",
+      "keywords": ["visio", "template", "block diagram", "flowchart", "cross functional", "network", "uml", "software", "engineering", "模版", "模板", "框图", "流程图", "泳道", "网络", "软件", "工程"],
+      "urls": {
+        "source": "https://support.microsoft.com/en-us/visio/featured-visio-templates-and-diagrams"
+      }
+    },
+    {
+      "id": "microsoft-computer-block-template",
+      "title": "Microsoft Visio computer block diagram template",
+      "kind": "visio-template",
+      "tier": 1,
+      "formats": [".vsdx"],
+      "license": "Microsoft template and service terms",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use only as a block-diagram composition reference; replace all content with the paper's semantic graph.",
+      "compatibility": "Online draw.io can import .vsdx; conversion may not preserve every Visio detail.",
+      "keywords": ["computer", "block diagram", "system architecture", "pipeline", "module", "hardware", "框图", "系统架构", "流程", "模块", "硬件"],
+      "urls": {
+        "source": "https://support.microsoft.com/en-us/visio/featured-visio-templates-and-diagrams",
+        "download": "https://createcatalog.public.onecdn.static.microsoft/support/templates/en-us/tf16403437.vsdx"
+      }
+    },
+    {
+      "id": "microsoft-basic-flowchart-template",
+      "title": "Microsoft Visio basic flowchart template",
+      "kind": "visio-template",
+      "tier": 1,
+      "formats": [".vstx"],
+      "license": "Microsoft template and service terms",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use as a top-down process or hierarchy layout reference; recreate the figure with native draw.io primitives.",
+      "compatibility": "Visio template; do not assume direct draw.io import for .vstx.",
+      "keywords": ["flowchart", "process", "hierarchy", "decision", "workflow", "流程图", "过程", "层级", "决策", "工作流"],
+      "urls": {
+        "source": "https://support.microsoft.com/en-us/visio/featured-visio-templates-and-diagrams",
+        "download": "https://createcatalog.public.onecdn.static.microsoft/support/templates/en-us/tf11712902.vstx"
+      }
+    },
+    {
+      "id": "microsoft-365-visio-architecture-pack",
+      "title": "Microsoft 365 architecture icons, Visio templates, and stencils",
+      "kind": "official-visio-stencil-pack",
+      "tier": 1,
+      "formats": ["Visio templates", "Visio stencils", "SVG"],
+      "license": "Permitted by Microsoft for architecture diagrams, training materials, and documentation; other rights reserved",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use only for exact Microsoft 365 architecture concepts and record the pack version/source in asset-ledger.md.",
+      "compatibility": "Use SVG directly as a vector image, or convert compatible legacy .vss stencils via vss.draw.io. Do not assume .vssx conversion.",
+      "keywords": ["microsoft 365", "office", "teams", "sharepoint", "visio stencil", "cloud architecture", "微软", "架构", "图标", "素材库"],
+      "urls": {
+        "source": "https://learn.microsoft.com/en-us/previous-versions/microsoft-365/solutions/architecture-icons-templates",
+        "download": "https://go.microsoft.com/fwlink/?linkid=2056186"
+      }
+    },
+    {
+      "id": "azure-architecture-icons",
+      "title": "Official Azure architecture icons",
+      "kind": "official-icon-pack",
+      "tier": 1,
+      "formats": ["SVG"],
+      "license": "Permitted by Microsoft for architecture diagrams, training materials, and documentation; other rights reserved",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use only for the exact Azure service represented; keep the service name adjacent and do not crop, rotate, or distort the icon.",
+      "compatibility": "General-purpose SVG, not a Visio stencil; import as a vector image.",
+      "keywords": ["azure", "cloud", "microsoft foundry", "ai service", "database", "compute", "微软云", "云", "人工智能服务", "数据库", "计算"],
+      "urls": {
+        "source": "https://learn.microsoft.com/en-us/azure/architecture/icons/"
+      }
+    },
+    {
+      "id": "aws-architecture-icons",
+      "title": "Official AWS architecture icons",
+      "kind": "official-icon-pack",
+      "tier": 1,
+      "formats": ["SVG", "PNG", "PowerPoint"],
+      "license": "AWS architecture icon and trademark terms",
+      "attribution_required": false,
+      "bundle_policy": "link-only",
+      "default_action": "Use only for the exact AWS service represented and prefer the current quarterly icon package over legacy third-party copies.",
+      "compatibility": "SVG and PNG can be imported; draw.io also has native AWS shapes in the bundled index.",
+      "keywords": ["aws", "amazon", "cloud", "lambda", "s3", "ec2", "architecture", "亚马逊", "云", "架构"],
+      "urls": {
+        "source": "https://aws.amazon.com/architecture/icons/"
+      }
+    },
+    {
+      "id": "bioicons",
+      "title": "BioIcons scientific SVG library and draw.io extension",
+      "kind": "scientific-svg-library",
+      "tier": 2,
+      "formats": ["SVG", "draw.io extension"],
+      "license": "Mixed per asset: CC0, CC BY, CC BY-SA, MIT, and others",
+      "attribution_required": true,
+      "bundle_policy": "link-only",
+      "default_action": "Select an individual asset, verify its license and creator, and copy the exact attribution into asset-ledger.md before use.",
+      "compatibility": "SVG import or BioIcons draw.io extension; external SVG remains a vector image rather than editable model primitives.",
+      "keywords": ["biology", "lab apparatus", "cell", "animal", "human", "chemistry", "microscopy", "machine learning", "生物", "实验器材", "细胞", "动物", "人体", "化学", "显微镜"],
+      "urls": {
+        "source": "https://bioicons.com/",
+        "drawio": "https://bioicons.com/extensions/"
+      }
+    },
+    {
+      "id": "scidraw",
+      "title": "SciDraw scientific illustration library",
+      "kind": "scientific-svg-library",
+      "tier": 2,
+      "formats": ["SVG", "PNG", "JPG"],
+      "license": "CC BY 4.0",
+      "attribution_required": true,
+      "bundle_policy": "link-only",
+      "default_action": "Prefer SVG; record title, creator, asset URL, modifications, and CC BY 4.0 credit before use.",
+      "compatibility": "SVG can be imported as a vector image; raster assets are allowed only in input/context regions.",
+      "keywords": ["scientific illustration", "laboratory", "animal", "brain", "neuron", "equipment", "publication", "科研插图", "实验室", "动物", "脑", "神经元", "设备", "论文"],
+      "urls": {
+        "source": "https://scidraw.io/"
+      }
+    },
+    {
+      "id": "servier-medical-art",
+      "title": "Servier Medical Art",
+      "kind": "scientific-svg-library",
+      "tier": 2,
+      "formats": ["SVG", "PNG"],
+      "license": "CC BY 4.0",
+      "attribution_required": true,
+      "bundle_policy": "link-only",
+      "default_action": "Use only for anatomy, physiology, pathology, or treatment concepts and include Servier's recommended credit.",
+      "compatibility": "SVG can be imported as a vector image; preserve scientific accuracy and attribution.",
+      "keywords": ["medical", "anatomy", "physiology", "pathology", "treatment", "cell", "health", "医学", "解剖", "生理", "病理", "治疗", "细胞", "健康"],
+      "urls": {
+        "source": "https://smart.servier.com/",
+        "attribution": "https://smart.servier.com/how-to-cite-servier-medical-art/"
+      }
+    }
+  ]
+}
