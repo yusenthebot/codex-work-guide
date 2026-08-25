@@ -34,6 +34,15 @@ generic XML heuristics. Both are required because semantic component fitness
 cannot be inferred from a raw shape name, while generic auto-routing cannot
 reliably reconstruct renderer-specific orthogonal paths.
 
+Every non-trivial figure must also enable the contract's `global_routing`
+policy. The generic visual checker intentionally excludes container vertices,
+so a `container=1` skill card can otherwise hide a connector that overlaps its
+border. Global routing treats every semantic component as a solid obstacle,
+checks freestanding labels and group borders, requires perpendicular ports,
+and rejects edge crossings, shared segments, and undersized parallel lanes.
+Zero `global-route-*` failures are mandatory; they cannot be waived as a
+warning or hidden by drawing an edge behind a filled card.
+
 ## What The Pre-Flight Catches (Without Rendering)
 
 ### 1. Arrow–Box Collision (FAIL)

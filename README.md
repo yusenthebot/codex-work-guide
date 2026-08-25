@@ -126,4 +126,4 @@ obsidian-starter/
 
 ## 科研框图
 
-`$academic-figures-drawer` 以可编辑 `.drawio` 为源文件，输出 PNG、SVG 和 PDF，并通过尺寸、对齐、连线穿透和论文宽度截图进行验收。科学逻辑优先使用 draw.io 原生矢量组件；需要图标时默认检索 MIT 许可的 Tabler outline，只保存实际使用的 SVG。Koboyo 仅在明确要求手绘风格时启用，不与 Tabler 混用。
+`$academic-figures-drawer` 以可编辑 `.drawio` 为源文件，输出 PNG、SVG 和 PDF，并通过尺寸、对齐、论文宽度截图与全局零重叠布线验收。所有语义连线必须使用明确的正交通道和垂直出入端口；检查器会自动审计技能卡、文字标签、容器边框以及线与线之间的交叉、贴边和重叠，任何问题都会直接阻止交付。科学逻辑优先使用 draw.io 原生矢量组件；需要图标时默认检索 MIT 许可的 Tabler outline，只保存实际使用的 SVG。Koboyo 仅在明确要求手绘风格时启用，不与 Tabler 混用。

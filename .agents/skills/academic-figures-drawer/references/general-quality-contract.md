@@ -52,7 +52,8 @@ Before drawing an edge, record its source, target, direction, relation type, and
 
 - Every arrow must have an unambiguous origin and destination. The number of arrows must match the scientific relation; do not imply three operations with two arrows or vice versa.
 - Use arrowheads, line styles, and colors consistently for data flow, control, feedback, update, and annotation. Keep feedback/update paths visually distinct from the main path.
-- Prefer short orthogonal routes. Add explicit waypoints and ports for fan-in/fan-out so edges do not cross boxes, formulas, labels, or unrelated panel boundaries.
+- Prefer short orthogonal routes. Reserve independent lanes before placing nodes; add explicit waypoints and ports for every semantic edge so connectors do not cross boxes, formulas, labels, unrelated panel boundaries, or other connectors.
+- Maintain at least 8 px from unrelated box/label borders and 12 px between parallel connector centerlines. Ports must enter/leave their own box perpendicularly; a line that runs along any border, shares a segment with another line, or disappears behind a filled container is a blocker.
 - Route long feedback lines from a visible source card or budget/training split, not from an invisible anchor with no semantic label.
 - Inspect arrowheads at paper scale; a connector that merely touches a border or disappears behind a node is not considered connected.
 
@@ -66,6 +67,10 @@ Before drawing an edge, record its source, target, direction, relation type, and
 - Declare obstacle sets for high-risk edges and use explicit waypoints. An edge
   that enters an unrelated box, label, icon, divider, or expanded clearance
   rectangle is a penetration and blocks handoff.
+- Enable `global_routing` for every non-trivial figure: automatically check all
+  declared semantic components, additional freestanding labels, relevant group
+  borders, and every semantic edge pair. Container-styled cards are still
+  semantic obstacles; excluding them from a generic checker is not acceptable.
 - Run `validate_figure_contract.py` before the first render and after every final
   geometry or routing edit. Auto-routed high-risk edges cannot prove clearance.
 

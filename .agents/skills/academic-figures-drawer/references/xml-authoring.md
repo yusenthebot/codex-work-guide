@@ -117,6 +117,19 @@ For exact manual route, use source/target points and optional bend points:
 </mxCell>
 ```
 
+For every semantic connector, set both explicit cardinal-side ports and at
+least one explicit route point. The first segment must travel perpendicularly
+away from the source border; the last segment must approach the target border
+perpendicularly. Never let a segment run along a box edge, cross an unrelated
+container/label, intersect another connector, or depend on renderer-selected
+orthogonal bends. Allocate distinct 12 px-separated lanes before placing cards;
+leave at least 8 px between each lane and neighboring box/label borders.
+
+Important: a skill card may use `container=1` only to parent its row cells; it
+is still a solid routing obstacle. Use `figure-contract.json` `global_routing`
+to audit those cards and freestanding labels rather than relying on a generic
+checker that excludes containers.
+
 For loop arrows, avoid giant Unicode glyphs when fidelity matters. Use two editable curved connectors:
 
 ```xml

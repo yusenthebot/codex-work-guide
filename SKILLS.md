@@ -10,7 +10,7 @@ Skill 负责工作方法，Plugin 负责安装和分发，MCP 或 Connector 负�
 | `$shuorenhua` | 修改公开文章、汇报和说明文字 | 保留事实、术语、数字和责任归属，只处理表达 |
 | `$llm-wiki` | 管理 Obsidian Markdown 知识库 | 支持 ingest、query 和 lint |
 | `$design-geist` | 设计网站、仪表盘和开发者工具 | 使用 Geist 字体、黑白灰配色和克制的组件规范 |
-| `$academic-figures-drawer` | 制作、修改或审查论文框图与方法示意图 | 以 `.drawio` 为源文件，默认使用 Tabler outline，并检查组件匹配、尺寸、连线穿透和论文宽度可读性 |
+| `$academic-figures-drawer` | 制作、修改或审查论文框图与方法示意图 | 以 `.drawio` 为源文件，默认使用 Tabler outline；强制正交布线，并对线框碰撞、边框贴线、线线交叉和重叠执行全局零容忍检查 |
 | `$nature-writing` | 规划或起草 Nature 风格论文与首次投稿材料 | 按论文类型、章节、语言和目标期刊加载对应规则 |
 
 打开本仓库后，Codex 会从 `.agents/skills/` 发现这些 Skill。若没有出现，重新打开任务或重启 Codex。

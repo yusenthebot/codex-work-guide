@@ -10,11 +10,10 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-
 TEMPLATES = {
     "brief.md": """# Diagram brief\n\n## User goal\n- Audience: \n- Output: editable `.drawio` plus: \n- Must communicate: \n- Must not do: \n\n## Source inventory\n| Source | Role (content/structure/style/layout/asset) | Notes |\n|---|---|---|\n| | | |\n\n## Requirement traceability\n| Requirement | Diagram evidence (panel/cell/edge) | Status |\n|---|---|---|\n\n## Semantic model\n- Input: \n- Stages: \n- Proposed contribution: \n- Output: \n- Training-only path: \n\n## Open assumptions\n- \n""",
     "visual-spec.md": """# Visual specification\n\n## Global style\n- Canvas/aspect: landscape, 1600–2200 × 850–1200 px\n- Font: Arial/Helvetica (Noto Sans CJK for Chinese)\n- Grid/margins: 8 px grid; 16–28 px outer margin\n- Corner radius / stroke: 10–16 px / 1.5–2 px\n- Arrow grammar: solid filled arrowhead for data; gray dashed for skip/feedback\n\n## Semantic palette\n| Meaning | Fill | Stroke | Used in |\n|---|---|---|---|\n| Input/raw signal/context | #E8F2F5 | #58727D | |\n| Existing/standard | #EAF0F6 | #63758A | |\n| Feature/tensor transform | #EDE9F4 | #7B6A9A | |\n| Training/task/output head | #F4EEDC | #9A7B3F | |\n| Proposed contribution | #F1D7D4 | #B44948 | |\n| Output/decision | #E5F1E3 | #5A8A55 | |\n\n## Typography\n- Panel/stage heading: 16–24 px, semibold\n- Module/body: 10–14 px\n- Tensor/equation note: 9–12 px\n\n## Composition notes\n- Overview: \n- Detail: \n- Legend: \n""",
-    "layout-grid.md": """# Layout grid\n\n- Canvas: \n- Coordinate origin: \n- Major panels and bounding boxes: \n- Baselines / columns: \n- Repeated block size: \n- Forbidden crossing zones: titles, labels, equations, dense icon rows\n- Drawing order: background → containers → shapes → edges → labels → legend\n""",
+    "layout-grid.md": """# Layout grid\n\n- Canvas: \n- Coordinate origin: \n- Major panels and bounding boxes: \n- Baselines / columns: \n- Repeated block size: \n- Routing channels: allocate before placing boxes; list each semantic edge and lane\n- Minimum box/label clearance: 8 px\n- Minimum parallel connector separation: 12 px\n- Endpoint ports: perpendicular entry/exit only; never run along a border\n- Forbidden crossing zones: all unrelated boxes, labels, equations, icons, group borders, and other connectors\n- Drawing order: background → containers → shapes → edges → labels → legend\n""",
     "asset-ledger.md": """# Asset ledger\n\n| Asset | Role | Source/provenance | License/terms | Attribution | Editable? | Modifications | Decision |\n|---|---|---|---|---|---|---|---|\n| | input/context | | | | | | |\n\nGenerated concept images are references unless explicitly approved as input/context assets. Do not embed a screenshot of the entire algorithm as the final figure. Verify every non-bundled asset's individual terms before use.\n""",
     "component-audit.md": """# Component audit\n\n| Intended noun | Candidate | Semantic /5 | Silhouette /5 | Style /5 | Paper scale /5 | Aspect /5 | Decision and reason |\n|---|---|---:|---:|---:|---:|---:|---|\n| | | | | | | | |\n\nEvery important component needs at least three candidates. Choose only >=21/25 with no criterion below 4; otherwise build an editable primitive.\n""",
     "figure-contract.json": """{
@@ -24,7 +23,18 @@ TEMPLATES = {
   \"dimension_groups\": [],
   \"non_overlap_groups\": [],
   \"containment\": [],
-  \"routes\": []
+  \"routes\": [],
+  \"global_routing\": {
+    \"enabled\": true,
+    \"auto_discover_obstacles\": true,
+    \"exclude_edge_prefixes\": [\"legend_sample_\"],
+    \"additional_obstacle_ids\": [],
+    \"boundary_ids\": [],
+    \"obstacle_clearance\": 8,
+    \"edge_clearance\": 12,
+    \"require_explicit_waypoints\": true,
+    \"require_orthogonal\": true
+  }
 }\n""",
     "defect-log.md": """# Defect log\n\n## Pass 0 — Plan review\n- Status: \n- Open risks: \n\n## Screenshot review cycles\n\n### Cycle 1\n- Screenshot (canvas-only): \n- P0/P1 inventory: \n- Fixes and verification: \n\n### Cycle 2\n- Screenshot (canvas-only): \n- P0/P1 inventory: \n- Fixes and verification: \n\n### Cycle 3\n- Screenshot (canvas-only): \n- P0/P1 inventory: \n- Fixes and verification: \n\n## Red-team audit\n- Text: \n- Arrows: \n- Boxes/overlap: \n- Spacing/layout: \n- Color/typography: \n- Icons/assets: \n- Semantics/regressions: \n\n## Self-score\n| Dimension | Score /10 | Evidence |\n|---|---:|---|\n| Text readability | | |\n| Arrow accuracy | | |\n| Color coherence | | |\n| Layout consistency | | |\n| Style/spec match | | |\n| **Total /50** | | |\n\n## Remaining gaps\n- \n""",
 }

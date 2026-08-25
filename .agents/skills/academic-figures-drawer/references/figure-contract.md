@@ -15,7 +15,7 @@ Use this contract when a paper or description has no usable style guide. It enco
 - Rounded rectangles represent modules; pale containers represent stages; small pills or cards represent tensor snapshots/annotations.
 - Use a consistent 10–16 px corner radius, 1.5–2 px box/arrow stroke, and filled triangular arrowheads for the main data path.
 - Use gray dashed arrows for skip/feedback/control relations. Use a short label on an edge only when the relation is not obvious.
-- Keep edges outside boxes and labels. Route fan-in/fan-out with explicit ports or waypoints instead of stacked lines.
+- Keep every edge outside unrelated boxes, labels, and semantic group borders. Route fan-in/fan-out with explicit perpendicular ports and dedicated orthogonal waypoints; preserve at least 8 px box clearance and 12 px between parallel lanes. Crossings, shared segments, border-following connectors, and hidden-under-container routes are forbidden.
 - Use ellipses/cylinders only when they denote a real input, memory, dataset, or output object.
 
 ## Color semantics

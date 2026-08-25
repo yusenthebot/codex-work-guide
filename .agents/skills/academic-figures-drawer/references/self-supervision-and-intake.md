@@ -300,6 +300,7 @@ Do not claim completion while any of these remain visible in the latest screensh
 - icons are incoherent, mismatched, or represent the wrong concept
 - an important component lacks a three-candidate audit or fails the 21/25 match gate
 - repeated cards/stages fail declared equal dimensions, alignment, or gap tolerance
+- any semantic route lacks explicit orthogonal geometry, penetrates an automatically discovered unrelated box/label, touches a semantic group border, follows its own box border, crosses another route, shares a connector segment, or violates the declared lane clearance
 - a declared high-risk route has no explicit geometry or penetrates an obstacle/clearance zone
 - style visibly conflicts with an explicit user constraint
 - screenshot is partial or clipped and cannot prove the full diagram is acceptable
@@ -359,6 +360,7 @@ A diagram can be handed off only after:
 - self-score meets the ALLOWED threshold (TOTAL ≥ 40 AND every dimension ≥ 6; a dimension of 5 is borderline — review and improve before handoff)
 - `validate_visual_quality.py` passed (zero FAILs) before the first preview
 - `validate_figure_contract.py --strict` passed against the current XML and contract
+- `global_routing.enabled=true` audited every semantic edge against all visible unrelated obstacles and every other semantic edge with zero failures
 - `validate_drawio.py` passed after the final XML edit
 - remaining approximations and P2 defects are explicitly listed
 - the user receives the `.drawio` path, latest screenshot path, preview URL if running, self-score card, defect inventory summary, and known gaps

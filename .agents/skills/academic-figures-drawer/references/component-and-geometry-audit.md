@@ -74,6 +74,26 @@ expanding it by the declared clearance also fails.
 - Inspect arrowheads after export. Static geometry can prove clearance but not
   every renderer-specific arrowhead or z-order artifact.
 
+### 4.1 Mandatory global zero-overlap policy
+
+Handpicked route obstacles do not prove that the rest of a diagram is clean.
+Enable `global_routing` on every non-trivial figure. The validator automatically
+uses every declared semantic component as an obstacle, including `container=1`
+skill cards, and audits the complete semantic edge list against:
+
+- all unrelated component boxes plus their minimum 8 px keep-out margins;
+- freestanding signal, relation, and annotation labels listed as additional obstacles;
+- the actual four border segments of relevant semantic group containers;
+- perpendicular entry/exit through each connector's own source and target ports;
+- strict orthogonal geometry with explicit waypoints for every semantic edge;
+- intersections, shared collinear segments, and a minimum 12 px separation
+  between parallel routes.
+
+Plan the channels before finalizing component placement. A channel containing
+`n` parallel centerlines requires both obstacle keep-out margins plus
+`(n - 1) × edge_clearance`; expand the layout whenever that channel cannot fit.
+A visible or machine-detected connector overlap is P0 and blocks delivery.
+
 ## 5. Required commands
 
 Run the semantic/geometry contract before rendering and again after the final
@@ -133,6 +153,16 @@ required. Contract warnings must be fixed or recorded in `defect-log.md`.
       "clearance": 3,
       "require_explicit_waypoints": true
     }
-  ]
+  ],
+  "global_routing": {
+    "enabled": true,
+    "exclude_edge_prefixes": ["legend_sample_"],
+    "additional_obstacle_ids": ["feedback_label"],
+    "boundary_ids": ["semantic_group"],
+    "obstacle_clearance": 8,
+    "edge_clearance": 12,
+    "require_explicit_waypoints": true,
+    "require_orthogonal": true
+  }
 }
 ```
