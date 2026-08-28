@@ -43,6 +43,7 @@
 
 ```text
 使用 $llm-wiki 执行 ingest：读取 sources/[文件]，保持原文件不变。
+为来源摘要加入至少一张本地图片和一行来源说明；优先使用原文图，没有合适原图时创建并标注“Generated analysis / 生成式分析图”。
 更新相关 Wiki 页面、wiki/index.md 和 wiki/log.md。
 标出来源冲突和不确定结论，完成后列出修改过的页面。
 ```

@@ -55,7 +55,7 @@ Plugin 用来分发 Skills 和连接器。MCP 让 Codex 访问外部工具与数
 | --- | --- |
 | `$agent-reach` | 网页、GitHub 和社交平台调研；社区内容只作为讨论信号 |
 | `$shuorenhua` | 清理文章里的模板感和 AI 腔，同时保护事实、数字和术语 |
-| `$llm-wiki` | 维护 Codex + Obsidian 的 Markdown 知识库 |
+| `$llm-wiki` | 维护 Codex + Obsidian 的 Markdown 知识库；来源录入必须包含本地图片和来源说明 |
 | `$design-geist` | 为网站、仪表盘和开发者工具提供 Geist 风格的前端设计规范 |
 | `$academic-figures-drawer` | 生成、审查和导出可编辑的论文框图与方法示意图；默认使用 Tabler outline 图标 |
 | `$nature-writing` | 规划和起草 Nature 风格论文正文与首次投稿材料 |
@@ -81,16 +81,18 @@ obsidian-starter/
 ├── AGENTS.md
 ├── inbox/
 ├── sources/
+│   └── assets/<source-slug>/
 └── wiki/
+    ├── assets/<source-slug>/
     ├── index.md
     └── log.md
 ```
 
-`sources/` 保存不改动的原始资料，`wiki/` 保存 Codex 整理的主题页，`index.md` 是知识目录，`log.md` 记录每次导入、查询和检查。
+`sources/` 保存不改动的原始资料，`sources/assets/` 保存原文图、图表和截图，`wiki/` 保存 Codex 整理的主题页，`wiki/assets/` 只保存明确标注的生成式分析图，`index.md` 是知识目录，`log.md` 记录每次导入、查询和检查。
 
 日常只需要三个动作：
 
-- Ingest：读取一个新来源，更新相关页面、索引和日志。
+- Ingest：读取一个新来源，加入至少一张本地图片和来源说明，再更新相关页面、索引和日志。
 - Query：根据 Wiki 回答问题，引用页面；有长期价值的结论写回 Wiki。
 - Lint：检查矛盾、过时内容、断链和孤立页面。
 
