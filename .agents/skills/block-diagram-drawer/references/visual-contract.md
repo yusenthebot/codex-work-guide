@@ -85,6 +85,7 @@ Assign one role per concept and reuse it in every figure of the same paper.
 | `gray` (stone) | inputs, neutral containers, standard components |
 
 Connectors are near-black (`WIRE`) by default; color an edge only when it carries a branch outcome such as accept or override.
+When the subject is a team (robots, agents), give each member one color and keep it in every view (task chips, winning allocation cells, agent cards, message frames, map markers, schedule bars); keep the panels neutral and red for failure only, so color reads as identity.
 Avoid gradients on containers; a gentle gradient is acceptable only inside a token row that blends two modalities.
 
 ### 4.3 Typography
@@ -151,6 +152,7 @@ Method-specific structure (graphs, token rows, kinematic chains, curves) stays a
 - Dashed gray rounded arc routed inside panel gutters for closed loops and feedback, with a serif italic label on a white knock-out.
 - Double-headed short arrow with a monospace label (for example `MSE`) for comparisons.
 - Curly brace to group several inputs into one consumer.
+- Vertical S-curves (`curve`) for a many-to-many mapping between two stacked layers: straight where the ports line up, a smooth S where they do not, never an orthogonal elbow that would overlap its neighbours.
 - Diamond or two-segment pill only for an explicit decision; label branches in serif italic (`yes`, `no`) or monospace (`accept`, `override`).
 - No connector may cross a label; move the label or reroute, then rerun QA.
 
@@ -187,6 +189,18 @@ Symmetry is not only equal widths; it is every peer card agreeing on where its c
 - Measure an icon's ink before centring it on a row line: Material glyphs fill about two thirds of their box and sit slightly above centre, so a centred box can leave the drawing off the line.
 - Never place an icon by hand-typed offsets next to text: compute its x from the label's measured width and its y from the label's line. A camera typed in at a fixed x beside "arm · camera" ended 7 px from the text and floated between the title and subtitle lines, and since the subtitle already said camera it was removed.
 - A label on a lane that runs under several panels sits inside one panel, placed with `route(..., label_at=x)`; centred on the whole lane it can land on a panel edge, which the gate reports as `straddle`.
+- Labels that sit on a bus or strip (message pills on a message bus) go in the gaps between the wires that tap it, never under a tap.
+
+### 6.3 Layered hierarchies
+
+A hierarchy of layers (goal, sub-goals, sub-graphs, contracts, policies) reads best as full-width bands stacked top to bottom with a schema column on the left.
+
+- Put each layer's name in its band and each relation between two layers (verb plus cardinality, such as `reference n : 1`) in the gap between the bands, with the cardinalities in one column.
+- Put the instances on shared columns to the right: every child centred under its parent, a shared target centred under the pair that references it, and each policy under a contract; `examples/example_hierarchy.py` does this.
+- Show a cardinality with the smallest instance that proves it: two sources on one target for `n : 1`, and for `n : m` one target with two sources plus one source with two targets.
+- Draw the mappings with `curve`, spread a box's ports (0.2, 0.5, 0.8) when it takes several wires, mirror the ports between the two halves, and order the boxes until no two wires cross.
+- Pick the instance count that makes the spacing come out even: two sub-graphs put three shared contracts on equal spacing where three sub-graphs could not.
+- A figure kept deliberately sparse may sit below the coverage floor; first narrow the canvas and keep the type size with `Fig(w, h, print_width_pt=516 * w / 1400)`, then relax `--min-coverage` and report the measured value.
 
 ## 7. Workflow
 
@@ -243,7 +257,7 @@ Link every text element to its container with `box=` so overflow is checked; fre
 
 | Call | Purpose |
 |---|---|
-| `Fig(w, h, print_width_pt=None)` then `save(path)` | canvas, defs, and output; print width defaults to 516 pt for canvases at least 1000 px wide and 252 pt otherwise |
+| `Fig(w, h, print_width_pt=None)` then `save(path)` | canvas, defs, and output; print width defaults to 516 pt for canvases at least 1000 px wide and 252 pt otherwise; pass `516 * w / 1400` to keep the 1400 px type sizes on a narrower canvas |
 | `fs(role)` | print-size font in px for `min`, `label`, `module`, `title`, `hero` |
 | `panel(x, y, w, h, role, title, sub=None, dashed=False, sub_below=False)` | flat stage panel; returns the content top y; `title=None` for a headerless strip |
 | `card(x, y, w, h, role, stack=0, key=False, fill=None, stroke=None, dashed=False)` | pastel or white card; returns an id for `box=` |
@@ -265,6 +279,7 @@ Link every text element to its container with `box=` so overflow is checked; fre
 | `connect(a, b, sides=None, ta=.5, tb=.5, mid=None, label=None, knockout=False)` | anchored arrow: straight when the ports line up, else an orthogonal elbow; `ta=None` follows the other box |
 | `bus(src, targets, side="bottom", at=None)` | stem plus one trunk plus one arrow per target |
 | `arc(a, b, sides=None, bulge=40, label=None)` | one quadratic feedback bend; the label sits outside the bend |
+| `curve(a, b, ta=.5, tb=.5, up=False)` | vertical S-curve between two stacked layers, straight when the ports line up; for many-to-many mappings |
 | `route(a, b, lanes, sides=None, label=None, label_seg=None, label_at=None)` | orthogonal feedback path that wraps through reserved lanes; `label_at` centres the label at an x (or y) on its segment |
 | `arrow(d, color=WIRE, dashed, start, end, open_)`, `line`, `dot`, `brace` | raw connectors for wires that start at a brace or sketch |
 | `scene(x, y, w, h, frame)` | schematic tabletop thumbnail |

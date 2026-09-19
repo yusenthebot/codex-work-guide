@@ -41,6 +41,7 @@ When a card needs a data sketch that is not real data (a trajectory, a progress 
 - Use a wide aspect for text-width figures, about 2:1 to 3.5:1 (1400 by 400 to 700 px); a method overview taller than that usually carries too much text.
 - Lay stages out left to right in two to five columns, each with a short title; stack rows only for parallel variants or a real hierarchy.
 - Draw a hierarchy as stacked group containers with the title inside each container, as Kimera, RoboMatrix and LLM3 do; do not build full-width bands with a separate header column of descriptions and a column of notes, because that reads as documentation, not as a paper figure.
+- A layered schema (goal, sub-goals, sub-graphs, contracts, policies) is the exception: a narrow left column carries only layer names and, in the gaps, each relation with its cardinality, while the instances sit on shared columns to the right (`examples/example_hierarchy.py`, visual contract section 6.3).
 - Split a two-part figure into panels `(a)` and `(b)` with short titles, optionally separated by a thin vertical rule.
 - Use 8 px outer margins and 8 to 12 px gutters, share column positions across rows, and keep the figure title out of the canvas.
 - Write the grid down as numbers (panel x-ranges, row y-ranges, card rectangles) before writing code, then express it in code with `f.cols`, `f.rows` and `f.place` instead of typed coordinates, so gutters and columns stay exact through every later edit.
@@ -55,10 +56,10 @@ When a card needs a data sketch that is not real data (a trajectory, a progress 
 - Write labels as names of one to four words, pair them with a symbol where the method has one (for example "World model $F_\psi$"), and never write explanatory sentences on the canvas.
 - Put verbatim example content (a user instruction, prompt, generated code, reasoning trace, feedback message) in `f.example()` cards or `f.bubble()`; only there may text run as sentences, set in serif, mono or a quote style.
 - Show the task with real imagery: embed renders, camera frames, point clouds or robot photos from the project with `f.image(path, x, y, w, h)`, and ask the user for a render when none is available; a drawn `scene()` is only a placeholder labeled `schematic`.
-- Give each concept one color role, keep it across every figure of the same report, and use two to four fills per figure.
+- Give each concept one color role, keep it across every figure of the same report, and use two to four fills per figure; when the subject is a team of robots or agents, one color per member in every view, with neutral panels.
 - Emphasize one key module, either with a stronger fill or with `key=True`; do not outline a whole path.
 - Label edges where they are drawn (relation names in mono, flow labels in serif italic) and keep any legend to four entries in a corner.
-- Draw every arrow with `f.connect`, `f.bus`, `f.arc` or `f.route` so both ends sit exactly on a port: `connect` for a flow (straight when the ports line up, an elbow otherwise, `ta=None` to meet a short card head-on), `bus` for one source feeding several targets, `arc` for a short feedback bend, `route` for a loop that wraps around content through a reserved lane.
+- Draw every arrow with `f.connect`, `f.bus`, `f.arc`, `f.route` or `f.curve` so both ends sit exactly on a port: `connect` for a flow (straight when the ports line up, an elbow otherwise, `ta=None` to meet a short card head-on), `bus` for one source feeding several targets, `arc` for a short feedback bend, `route` for a loop that wraps around content through a reserved lane, `curve` for a many-to-many mapping between two stacked layers.
 - Reach for `f.zone` when a row has no card of its own, and keep hand-typed paths for wires that start at a brace, a sketch or a circled step; anchor even those on `f.port` so both ends land on a real edge.
 - A long feedback wire needs a lane: reserve a gutter between columns or run it through a panel title row, and give its label a knock-out (`knockout=True`) so it sits on the wire instead of beside a card; `label_at` keeps that label inside one panel.
 - Curves and straight lines are both fine, but no wire may overlap another, cross a card it does not attach to, or stop short of its box.
@@ -173,4 +174,5 @@ Keep Chinese text upright in sans; never italicize CJK.
 | `references/licenses/` | MIT license texts copied beside vendored icons |
 | `references/visual-contract.md` | full visual contract, API table, and pitfalls |
 | `examples/example_pipeline.py` | complete reference figure |
+| `examples/example_hierarchy.py` | minimal layered schema: bands, a schema column with cardinalities, many-to-many `curve` wires |
 | `tests/` | unit and browser tests for the kit (`python -m unittest discover -s tests`) |

@@ -385,6 +385,15 @@ class LayoutTests(unittest.TestCase):
         x = float(re.search(r'x="([\d.]+)"', label_markup(f, "next")).group(1))
         self.assertLess(x, 581)  # the outside would leave the canvas, so the label moves inward
 
+    def test_curve_is_straight_when_ports_line_up_and_an_s_otherwise(self) -> None:
+        f = figkit.Fig(600, 400)
+        a = f.card(100, 40, 100, 40, "blue")
+        b = f.card(100, 200, 100, 40, "green")
+        c = f.card(300, 200, 100, 40, "green")
+        self.assertEqual(f.curve(a, b), "M150.0 81.0V199.0")
+        self.assertEqual(f.curve(a, c, ta=0.8, tb=0.2), "M180.0 81.0C180.0 140.0 320.0 140.0 320.0 199.0")
+        self.assertEqual(f.curve(b, a, up=True), "M150.0 199.0V81.0")
+
     def test_route_wraps_through_its_lanes(self) -> None:
         f = figkit.Fig(1400, 600)
         a = f.card(100, 400, 200, 60, "blue")

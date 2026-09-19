@@ -1119,6 +1119,22 @@ class Fig:
                 self.arrow(f"M{trunk:.1f} {y:.1f}H{tx:.1f}", color, sw, head=head)
         return trunk
 
+    def curve(self, a, b, ta=0.5, tb=0.5, up=False, color=WIRE, sw=1.3, dashed=False, head=7.0, gap=1.0):
+        """Wire between two stacked layers that leaves and enters vertically: a straight line when the ports line
+        up, otherwise a smooth S. Use it for many-to-many mappings between rows (nodes to contracts, policies to
+        contracts): give a box that takes several wires spread ports (`ta`/`tb` of 0.2, 0.5, 0.8), mirror them
+        between the two halves of the figure, and order the boxes so no two wires cross.
+        `up=True` runs from the top of `a` to the bottom of `b`. Returns the path data."""
+        x0, y0 = self.port(a, "top" if up else "bottom", ta, out=gap)
+        x1, y1 = self.port(b, "bottom" if up else "top", tb, out=gap)
+        if abs(x0 - x1) < 0.5:
+            d = f"M{x0:.1f} {y0:.1f}V{y1:.1f}"
+        else:
+            ym = (y0 + y1) / 2
+            d = f"M{x0:.1f} {y0:.1f}C{x0:.1f} {ym:.1f} {x1:.1f} {ym:.1f} {x1:.1f} {y1:.1f}"
+        self.arrow(d, color, sw, dashed=dashed, head=head)
+        return d
+
     def arc(self, a, b, sides=None, bulge=40, color=FAINT, sw=1.3, dashed=True, head=7.0, label=None,
             label_color=None, label_size=None, ta=0.5, tb=0.5, gap=1.0, knockout=False):
         """Curved connector for a feedback or return path: one quadratic bend of `bulge` px, sign picks the side.
