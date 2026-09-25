@@ -190,6 +190,8 @@ Symmetry is not only equal widths; it is every peer card agreeing on where its c
 - Never place an icon by hand-typed offsets next to text: compute its x from the label's measured width and its y from the label's line. A camera typed in at a fixed x beside "arm · camera" ended 7 px from the text and floated between the title and subtitle lines, and since the subtitle already said camera it was removed.
 - A label on a lane that runs under several panels sits inside one panel, placed with `route(..., label_at=x)`; centred on the whole lane it can land on a panel edge, which the gate reports as `straddle`.
 - Labels that sit on a bus or strip (message pills on a message bus) go in the gaps between the wires that tap it, never under a tap.
+- A figure whose arrows form loops must show the loops at a glance: one colour per loop, heavier wires for the loops than for supporting arrows, step numbers (`f.loop_step`) on the wires in the order of execution, and a short key naming each loop.
+- Keep the icons on recognizable parts even when the arrows are the point; a redraw that dropped them and drew nine gray wires of one weight was read as unclear.
 
 ### 6.3 Layered hierarchies
 
@@ -279,6 +281,7 @@ Link every text element to its container with `box=` so overflow is checked; fre
 | `connect(a, b, sides=None, ta=.5, tb=.5, mid=None, label=None, knockout=False)` | anchored arrow: straight when the ports line up, else an orthogonal elbow; `ta=None` follows the other box |
 | `bus(src, targets, side="bottom", at=None)` | stem plus one trunk plus one arrow per target |
 | `arc(a, b, sides=None, bulge=40, label=None)` | one quadratic feedback bend; the label sits outside the bend |
+| `loop_step(cx, cy, n, color, r=13)` | filled step number drawn over a wire, registered as a box so it knocks the wire out |
 | `curve(a, b, ta=.5, tb=.5, up=False)` | vertical S-curve between two stacked layers, straight when the ports line up; for many-to-many mappings |
 | `route(a, b, lanes, sides=None, label=None, label_seg=None, label_at=None)` | orthogonal feedback path that wraps through reserved lanes; `label_at` centres the label at an x (or y) on its segment |
 | `arrow(d, color=WIRE, dashed, start, end, open_)`, `line`, `dot`, `brace` | raw connectors for wires that start at a brace or sketch |

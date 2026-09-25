@@ -394,6 +394,12 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(f.curve(a, c, ta=0.8, tb=0.2), "M180.0 81.0C180.0 140.0 320.0 140.0 320.0 199.0")
         self.assertEqual(f.curve(b, a, up=True), "M150.0 199.0V81.0")
 
+    def test_loop_step_is_a_box_centred_on_its_point(self) -> None:
+        f = figkit.Fig(400, 200)
+        bid = f.loop_step(100, 60, 3, "#1F5E70")
+        self.assertEqual(f.rect(bid), (87.0, 47.0, 26.0, 26.0))
+        self.assertIn(f'data-box="{bid}"', f.svg())
+
     def test_route_wraps_through_its_lanes(self) -> None:
         f = figkit.Fig(1400, 600)
         a = f.card(100, 400, 200, 60, "blue")

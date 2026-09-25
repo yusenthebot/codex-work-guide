@@ -651,6 +651,18 @@ class Fig:
                   italic=italic, family=family)
         return w
 
+    def loop_step(self, cx, cy, n, color=INK, r=13, size=None):
+        """Filled step number drawn over a wire, for numbering the steps of a loop along its arrows.
+
+        The disc is registered as a box and drawn after the wire, so the QA gate reads it as a knock-out
+        instead of a label crossed by a line; `r=13` matches the height of a wire label pill. Returns the id."""
+        size = size or self.fs("min")
+        bid = self.uid("step")
+        self.add(f'<circle data-box="{bid}" data-kind="chip" cx="{cx:.1f}" cy="{cy:.1f}" r="{r}" fill="{color}"/>')
+        self._reg(bid, cx - r, cy - r, 2 * r, 2 * r)
+        self.text(cx, cy + size * 0.34, str(n), size=size, weight=700, anchor="middle", color="#FFFFFF", box=bid)
+        return bid
+
     def step(self, cx, cy, n, r=None, color=INK, size=None):
         """Circled step number (thin outline)."""
         size = size or self.fs("min")
